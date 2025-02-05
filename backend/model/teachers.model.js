@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+import mongoose from "mongoose"
 
 
 const commentSchema = new mongoose.Schema({
@@ -13,13 +13,13 @@ const teacherSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    image: {
+    image_url: {  // Updated to match MongoDB field name
         type: String,
         required: true,
         trim: true
     },
     comments: [commentSchema]
-})
+});
 
-const Teacher = mongoose.model('Teacher', teacherSchema)
-module.exports = Teacher;
+const Teacher = mongoose.model('Teacher', teacherSchema, 'teachers');
+export default Teacher;
